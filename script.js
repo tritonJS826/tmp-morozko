@@ -10,6 +10,10 @@ const N8N_WEBHOOK_ID = '9cee9672-ed37-4329-8f81-f20386625bc4';
 // Chat Trigger регистрирует вебхук по пути `{webhookId}/chat` (см. CHAT_TRIGGER_PATH_SUFFIX в n8n).
 // Это production-URL: работает, когда workflow активен (Active).
 const CHAT_WEBHOOK_URL = `${N8N_BASE_URL}/webhook/${N8N_WEBHOOK_ID}/chat`;
+
+// Отдельный вебхук (нода Webhook) для ответов живого менеджера из Telegram.
+const MANAGER_MESSAGES_URL = `${N8N_BASE_URL}/webhook/morozko/manager-messages`;
+const MANAGER_POLL_MS = 6000;
 /* ===================================================================== */
 
 const SESSION_KEY = 'ny_consultant_session_id';
@@ -69,11 +73,13 @@ function openChat() {
       'bot'
     );
   }
+  startManagerPolling();
   setTimeout(() => input.focus(), 60);
 }
 
 function closeChat() {
   modal.classList.add('hidden');
+  stopManagerPolling();
 }
 
 openBtn.addEventListener('click', openChat);
@@ -83,6 +89,42 @@ modal.addEventListener('click', (e) => {
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeChat();
 });
+
+/* ---------- manager replies polling ---------- */
+// n8n Chat Trigger не умеет пушить сообщения в открытый чат, поэтому ответы
+// живого менеджера (из Telegram) забираем поллингом и показываем в чате.
+let managerTimer = null;
+
+function startManagerPolling() {
+  if (managerTimer) return;
+  const tick = () => {
+    if (!modal.classList.contains('hidden')) pollManagerMessages();
+  };
+  pollManagerMessages();
+  managerTimer = setInterval(tick, MANAGER_POLL_MS);
+}
+
+function stopManagerPolling() {
+  if (managerTimer) {
+    clearInterval(managerTimer);
+    managerTimer = null;
+  }
+}
+
+async function pollManagerMessages() {
+  try {
+    const url = `${MANAGER_MESSAGES_URL}?sessionId=${encodeURIComponent(getSessionId())}`;
+    const res = await fetch(url, { method: 'GET' });
+    if (!res.ok) return;
+    const data = await res.json();
+    const list = Array.isArray(data.messages) ? data.messages : [];
+    list.forEach((text) => {
+      if (typeof text === 'string' && text.trim()) addMessage(text.trim(), 'manager');
+    });
+  } catch (_) {
+    // Поллинг не критичен: молча ждём следующего цикла.
+  }
+}
 
 /* ---------- sending ---------- */
 form.addEventListener('submit', (e) => {

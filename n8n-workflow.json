@@ -1,0 +1,167 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "public": true,
+        "mode": "webhook",
+        "options": {
+          "allowedOrigins": "*",
+          "responseMode": "lastNode"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        3280,
+        1648
+      ],
+      "id": "4344fe61-d668-45a6-b828-780440d8bfd3",
+      "name": "When chat message received",
+      "webhookId": "9cee9672-ed37-4329-8f81-f20386625bc4"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.chatInput }}",
+        "options": {
+          "systemMessage": "=Ты — Морозко, доброжелательный консультант интернет-магазина новогодних подарков «Морозко». Отвечай на том языке, на котором пишет клиент (определяй язык по его сообщению и поддерживай его во всём диалоге). Пиши кратко, вежливо и тепло, не используй эмодзи.\n\n## О магазине\n«Морозко» — интернет-магазин новогодних подарков, работаем с 2014 года. Помогаем выбрать и красиво упаковать подарки для близких, друзей, коллег и деловых партнёров.\n\n## Что мы делаем (услуги)\n- Готовые подарочные наборы под разные поводы и бюджеты.\n- Персональный подбор подарка онлайн: консультант помогает выбрать под настроение и бюджет.\n- Ручная подарочная упаковка и открытка от руки — бесплатно к каждому заказу.\n- Доставка за 1–3 дня (курьером и почтой).\n- Корпоративные заказы и подарки для сотрудников и партнёров — обсуждаем с менеджером.\n- Возврат в течение 30 дней, если подарок не подошёл.\n\n## Ассортимент\nГотовые наборы: «Золотая коробка», «Мятный иней», «Фиолетовый бант», «Пряничный пряник», «Полуночная звезда», «Еловый лес».\n\n## Контакты\nТелефон: 300-10-20. Почта: hello@morozko-shop.com.\n\n## Твоя задача\n1) Отвечай на любые вопросы клиента о магазине, услугах, доставке, упаковке, возврате, оплате и ассортименте — строго по информации выше.\n2) Если чего-то не знаешь или нужны детали (точное наличие, индивидуальный заказ, сроки под конкретную дату) — вежливо предложи клиенту связаться с менеджером по телефону 300-10-20 или написать на hello@morozko-shop.com.\n3) Мягко узнай у клиента: для кого подарок (кому и на какой праздник), примерный бюджет и интересы/пожелания. Задавай не больше одного вопроса за сообщение, не устраивай допрос.\n4) На основе ответов предложи 2–3 подходящих набора из ассортимента.\n\nВсегда отвечай клиенту текстом. Никогда не выдумывай цены, наличие и услуги, которых нет в информации выше."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        3632,
+        1648
+      ],
+      "id": "ee8a5e46-e2e1-4fac-ba11-3bfd52ac6ca2",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        3408,
+        1888
+      ],
+      "id": "3e2c40c1-bb03-4fa2-9de4-31e6d8703119",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "hprjRbPJ0D5XJeqa",
+          "name": "OpenAI account 34"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        3632,
+        1888
+      ],
+      "id": "1da80cf2-e6c8-4a17-b560-c7dd23146fc9",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "chat-reply",
+              "name": "output",
+              "value": "={{ $json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3920,
+        1648
+      ],
+      "id": "d772636b-0632-4507-b279-e44ecdd5d416",
+      "name": "Ответ в чат"
+    },
+    {
+      "parameters": {
+        "content": "## «Морозко» — консультант магазина\n\nСхема: **Chat Trigger → AI Agent** (LLM + Memory) **→ «Ответ в чат»**.\n\nОтвет клиенту уходит автоматически: Chat Trigger возвращает в чат вывод последней ноды («Ответ в чат», поле `output`).\n\n### Что нужно сделать\n1. **OpenAI Chat Model** — выберите credential.\n2. Включите **Active**.\n3. На сайте используйте **Production URL** из Chat Trigger, а не Test URL.\n4. В Chat Trigger → Options → Allowed Origins укажите домен сайта.",
+        "height": 400,
+        "width": 470,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2960,
+        1312
+      ],
+      "id": "f08b2374-76ff-4425-83b1-8eced1c77e28",
+      "name": "Заметка: TODO"
+    }
+  ],
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Ответ в чат",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "instanceId": "d04d24a3159cbe7521c1f2ff8e12b2e84d7ee794d1b9f7da64626049dcd0899e"
+  }
+}

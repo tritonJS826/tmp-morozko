@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Морозко — интернет-магазин новогодних подарков. Готовые наборы, подарочная упаковка и доставка за 1–3 дня." />
+  <title>Морозко — интернет-магазин новогодних подарков</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="snow" aria-hidden="true"></div>
+
+  <!-- Промо-полоса -->
+  <div class="promo">
+    <span>Бесплатная подарочная упаковка к каждому заказу</span>
+    <span>·</span>
+    <span>Доставка за 1–3 дня</span>
+  </div>
+
+  <!-- Шапка -->
+  <header class="topbar">
+    <a class="logo" href="#">
+      <span class="logo__text">
+        <strong>Морозко</strong>
+        <small>новогодние подарки</small>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Основная навигация">
+      <a href="#catalog">Каталог</a>
+      <a href="#benefits">Доставка</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <a class="topbar__phone" href="tel:3001020">300-10-20</a>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <p class="hero__eyebrow">Сезон 2026 · более 300 наборов</p>
+    <h1 class="hero__title">Новогодние <span>подарки</span></h1>
+    <p class="hero__subtitle">
+      Собрали тёплые подарки для близких и коллег: готовые наборы, ручная
+      упаковка и открытка от руки. Запутались в выборе — наш консультант
+      подберёт идею под настроение и бюджет.
+    </p>
+    <div class="hero__actions">
+      <a class="cta cta--ghost" href="#catalog">Смотреть каталог</a>
+      <button class="cta" id="openChat" type="button">Связаться с консультантом</button>
+    </div>
+    <ul class="hero__facts">
+      <li><strong>4.9★</strong><span>2 300+ отзывов</span></li>
+      <li><strong>1–3 дня</strong><span>быстрая доставка</span></li>
+      <li><strong>100%</strong><span>натуральные материалы</span></li>
+    </ul>
+  </section>
+
+  <!-- Каталог -->
+  <main>
+    <section class="catalog" id="catalog">
+      <div class="section-head">
+        <h2>Хиты сезона</h2>
+        <p>Готовые наборы с подарочной упаковкой уже включены в цену</p>
+      </div>
+
+      <div class="gifts">
+        <article class="gift">
+          <span class="gift__badge">Хит</span>
+          <svg class="gift__art" viewBox="0 0 200 200" role="img" aria-label="Подарочный набор Золотая коробка">
+            <defs>
+              <linearGradient id="box-1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#ffe9b3" />
+                <stop offset="1" stop-color="#f2b230" />
+              </linearGradient>
+            </defs>
+            <circle cx="152" cy="46" r="30" fill="#e63946" opacity="0.22" />
+            <circle cx="46" cy="154" r="20" fill="#ffffff" opacity="0.10" />
+            <ellipse cx="80" cy="56" rx="26" ry="16" fill="#e63946" transform="rotate(-28 80 56)" />
+            <ellipse cx="120" cy="56" rx="26" ry="16" fill="#e63946" transform="rotate(28 120 56)" />
+            <circle cx="100" cy="62" r="12" fill="#c1121f" />
+            <rect x="46" y="80" width="108" height="86" rx="14" fill="url(#box-1)" />
+            <rect x="38" y="66" width="124" height="24" rx="10" fill="#ffd166" />
+            <rect x="93" y="66" width="14" height="100" fill="#e63946" opacity="0.9" />
+          </svg>
+          <h3 class="gift__title">Набор «Золотая коробка»</h3>
+          <p class="gift__text">Свеча, какао ручной работы и медовое печенье в подарочной шкатулке.</p>
+        </article>
+
+        <article class="gift">
+          <svg class="gift__art" viewBox="0 0 200 200" role="img" aria-label="Подарочный набор Мятный иней">
+            <defs>
+              <linearGradient id="box-2" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#c8fff0" />
+                <stop offset="1" stop-color="#34c6a3" />
+              </linearGradient>
+            </defs>
+            <circle cx="50" cy="52" r="26" fill="#ffffff" opacity="0.10" />
+            <g stroke="#eaf9ff" stroke-width="6" stroke-linecap="round" opacity="0.85" transform="translate(150 46)">
+              <line x1="0" y1="-16" x2="0" y2="16" />
+              <line x1="-14" y1="-9" x2="14" y2="9" />
+              <line x1="-14" y1="9" x2="14" y2="-9" />
+            </g>
+            <rect x="46" y="84" width="108" height="82" rx="14" fill="url(#box-2)" />
+            <rect x="38" y="68" width="124" height="24" rx="10" fill="#7ef0d0" />
+            <rect x="93" y="64" width="14" height="102" fill="#0f766e" opacity="0.85" />
+            <circle cx="100" cy="60" r="12" fill="#0f766e" />
+          </svg>
+          <h3 class="gift__title">Набор «Мятный иней»</h3>
+          <p class="gift__text">Хвойный саше, эфирное масло и керамическая кружка в крафт-боксе.</p>
+        </article>
+
+        <article class="gift">
+          <span class="gift__badge gift__badge--new">Новинка</span>
+          <svg class="gift__art" viewBox="0 0 200 200" role="img" aria-label="Подарочный набор Фиолетовый бант">
+            <defs>
+              <radialGradient id="box-3" cx="0.3" cy="0.3" r="0.9">
+                <stop offset="0" stop-color="#d8ccff" />
+                <stop offset="1" stop-color="#7c3aed" />
+              </radialGradient>
+            </defs>
+            <circle cx="60" cy="58" r="40" fill="#a78bfa" opacity="0.25" />
+            <circle cx="146" cy="152" r="34" fill="#f0abfc" opacity="0.25" />
+            <rect x="50" y="86" width="100" height="80" rx="20" fill="url(#box-3)" />
+            <rect x="92" y="70" width="16" height="96" fill="#f5d0fe" />
+            <path d="M100 70 C 70 30 40 50 70 70 C 40 50 70 96 100 70 C 130 96 160 50 130 70 C 160 50 130 30 100 70 Z" fill="#f5d0fe" />
+          </svg>
+          <h3 class="gift__title">Набор «Фиолетовый бант»</h3>
+          <p class="gift__text">Аромадиффузор, гирлянда-шар и шоколад с солью в лаконичной упаковке.</p>
+        </article>
+
+        <article class="gift">
+          <svg class="gift__art" viewBox="0 0 200 200" role="img" aria-label="Подарочный набор Пряничный пряник">
+            <defs>
+              <linearGradient id="box-4" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#ff9a9a" />
+                <stop offset="1" stop-color="#d62828" />
+              </linearGradient>
+            </defs>
+            <circle cx="152" cy="150" r="30" fill="#ffd166" opacity="0.20" />
+            <rect x="46" y="80" width="108" height="86" rx="14" fill="url(#box-4)" />
+            <rect x="38" y="66" width="124" height="22" rx="9" fill="#ffb703" />
+            <g transform="translate(100 80) rotate(24)">
+              <rect x="-8" y="0" width="16" height="86" fill="#fff4e0" opacity="0.9" />
+            </g>
+            <rect x="93" y="64" width="14" height="102" fill="#fff4e0" />
+            <circle cx="100" cy="60" r="11" fill="#ffd166" />
+          </svg>
+          <h3 class="gift__title">Набор «Пряничный пряник»</h3>
+          <p class="gift__text">Имбирные пряники, глинтвейн-микс и деревянный ёлочный шар.</p>
+        </article>
+
+        <article class="gift">
+          <span class="gift__badge">Хит</span>
+          <svg class="gift__art" viewBox="0 0 200 200" role="img" aria-label="Подарочный набор Полуночная звезда">
+            <defs>
+              <linearGradient id="box-5" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#9ec5ff" />
+                <stop offset="1" stop-color="#2563eb" />
+              </linearGradient>
+            </defs>
+            <circle cx="52" cy="150" r="26" fill="#ffffff" opacity="0.10" />
+            <path d="M150 30 l7 16 17 2 -13 11 4 17 -15 -9 -15 9 4 -17 -13 -11 17 -2 z" fill="#fde68a" opacity="0.9" />
+            <rect x="48" y="88" width="104" height="78" rx="16" fill="url(#box-5)" />
+            <rect x="40" y="72" width="120" height="24" rx="10" fill="#bfdbfe" />
+            <rect x="93" y="68" width="14" height="98" fill="#fde68a" />
+            <circle cx="100" cy="62" r="12" fill="#fde68a" />
+          </svg>
+          <h3 class="gift__title">Набор «Полуночная звезда»</h3>
+          <p class="gift__text">Плед-флис, набор для какао и проектор звёздного неба.</p>
+        </article>
+
+        <article class="gift">
+          <span class="gift__badge gift__badge--sale">−20%</span>
+          <svg class="gift__art" viewBox="0 0 200 200" role="img" aria-label="Подарочный набор Еловый лес">
+            <defs>
+              <linearGradient id="box-6" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#b7f7c1" />
+                <stop offset="1" stop-color="#15803d" />
+              </linearGradient>
+            </defs>
+            <circle cx="150" cy="52" r="28" fill="#ffffff" opacity="0.10" />
+            <circle cx="46" cy="150" r="22" fill="#facc15" opacity="0.20" />
+            <rect x="46" y="92" width="108" height="74" rx="14" fill="url(#box-6)" />
+            <rect x="38" y="76" width="124" height="24" rx="10" fill="#86efac" />
+            <rect x="93" y="72" width="14" height="94" fill="#f43f5e" />
+            <ellipse cx="80" cy="64" rx="24" ry="15" fill="#f43f5e" transform="rotate(-28 80 64)" />
+            <ellipse cx="120" cy="64" rx="24" ry="15" fill="#f43f5e" transform="rotate(28 120 64)" />
+            <circle cx="100" cy="70" r="11" fill="#be123c" />
+          </svg>
+          <h3 class="gift__title">Набор «Еловый лес»</h3>
+          <p class="gift__text">Мини-ёлка, лампочки и аромат хвои в эко-упаковке из переработанного картона.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Преимущества -->
+    <section class="benefits" id="benefits">
+      <div class="benefit">
+        <h3>Доставка 1–3 дня</h3>
+        <p>Курьером и почтой — бережно довезём набор до двери.</p>
+      </div>
+      <div class="benefit">
+        <h3>Ручная упаковка</h3>
+        <p>Крафт, ленты и открытка от руки — бесплатно к каждому заказу.</p>
+      </div>
+      <div class="benefit">
+        <h3>Помощь в выборе</h3>
+        <p>Консультант подберёт подарок под бюджет и повод за пару минут.</p>
+      </div>
+      <div class="benefit">
+        <h3>Возврат 30 дней</h3>
+        <p>Не подошло — вернём деньги без лишних вопросов.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Подвал -->
+  <footer class="footer" id="contacts">
+    <div class="footer__cols">
+      <div>
+        <a class="logo" href="#">
+          <span class="logo__text">
+            <strong>Морозко</strong>
+            <small>новогодние подарки</small>
+          </span>
+        </a>
+        <p class="footer__about">Интернет-магазин новогодних подарков и готовых подарочных наборов с 2014 года.</p>
+      </div>
+      <div>
+        <h4>Покупателям</h4>
+        <a href="#catalog">Каталог</a>
+        <a href="#benefits">Доставка и оплата</a>
+        <a href="#">Возврат</a>
+      </div>
+      <div>
+        <h4>Контакты</h4>
+        <a href="tel:3001020">300-10-20</a>
+        <a href="mailto:hello@morozko-shop.com">hello@morozko-shop.com</a>
+      </div>
+    </div>
+    <p class="footer__copy">© <span id="year"></span> «Морозко». Демонстрационный сайт · сделано с любовью к Новому году</p>
+  </footer>
+
+  <!-- Попап с чатом -->
+  <div class="modal hidden" id="chatModal" role="dialog" aria-modal="true" aria-labelledby="chatTitle">
+    <div class="modal__backdrop" data-close></div>
+    <section class="chat">
+      <header class="chat__header">
+        <div class="chat__avatar" aria-hidden="true">М</div>
+        <div class="chat__who">
+          <strong id="chatTitle">Консультант «Морозко»</strong>
+          <span class="chat__status"><i></i> онлайн</span>
+        </div>
+        <button class="chat__close" type="button" data-close aria-label="Закрыть чат">✕</button>
+      </header>
+
+      <div class="chat__messages" id="messages" aria-live="polite"></div>
+
+      <form class="chat__form" id="chatForm">
+        <input
+          class="chat__input"
+          id="chatInput"
+          type="text"
+          placeholder="Напишите сообщение…"
+          autocomplete="off"
+          aria-label="Сообщение"
+        />
+        <button class="chat__send" type="submit" aria-label="Отправить">➤</button>
+      </form>
+      <p class="chat__hint">Отвечает онлайн-консультант магазина. Разговор анонимный.</p>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
